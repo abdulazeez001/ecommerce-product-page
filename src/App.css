@@ -1,0 +1,342 @@
+@import url('https://fonts.google.com/specimen/Kumbh+Sans');
+
+*,
+*::before,
+*::after{
+ margin:0 
+}
+:root{
+  --primary-orange:hsl(26, 100%, 55%);
+  --primary-pale-orange:hsl(25, 100%, 94%);
+  --very-dark-blue: hsl(220, 13%, 13%);
+  --dark-grayish-blue: hsl(219, 9%, 45%);
+  --grayish-blue: hsl(220, 14%, 75%);
+  --light-grayish-blue: hsl(223, 64%, 98%);
+  --white: hsl(0, 0%, 100%);
+  --Black: hsl(0, 0%, 0%,0.75);
+  --font-bolder:700;
+  --font-bold:400;
+}
+
+body{
+  box-sizing: border-box;
+  font-family:"Kumbh Sans",Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+a{
+  text-decoration: none;
+}
+button:hover{
+  opacity: .5;
+
+}
+.App{
+  display: flex;
+  justify-content: center;
+}
+.modal,.sideNav,.display-cart{
+  display: none;
+}
+
+header{
+  position: fixed;
+  background-color: var(--white);
+  display:flex;
+  width: calc(100vw - 3rem);
+  justify-content: space-between;
+  align-items:center;
+  padding: 1rem 1.5rem;
+  z-index: 1;
+
+}
+.cart-container{
+  width: 1.5rem;
+  position: relative;
+}
+.cart-container p{
+position: absolute;
+font-size:0.6rem;
+background-color:var(--primary-orange);
+padding:1px 5px;
+color: white;
+margin-top:-9px;
+right: 0;
+border-radius: 100%;
+
+}
+
+.logo-container{
+  display: flex;
+  column-gap: 1rem;
+  align-items: baseline;
+
+}
+.nav-container,
+.thumbnail-container{
+  display: none;
+}
+
+
+.cart-avatar{
+  display: flex;
+  column-gap: 1rem;
+}
+
+.avatar{
+  width: 22px;
+  height: 20px;
+  align-self:baseline; 
+}
+.avatar:hover{
+  box-sizing: border-box;
+  border-radius:100%;
+  border: 2px solid var(--primary-orange);
+}
+.product-img-container{
+  position: relative;
+}
+.carousel-control{
+  position:absolute;
+  display:grid;
+  width: calc(100% - 2rem);
+  padding:1rem;
+   grid-template-columns: 1fr 1fr;
+  top: 50%;
+}
+.carousel-control .next{
+  justify-self: end;
+}
+.carousel-control img{
+  background-color: var(--white);
+  padding: .5rem .6rem;
+  border-radius: 100%;
+}
+.product-img{
+  width:100%; 
+  height: 18.75rem;
+  margin-top: 1.5rem;
+}
+.product-img:hover, 
+.thumbnail-container div:hover, 
+button:hover,
+.cart-container:hover,
+.avatar:hover,
+.nav-container li:hover,
+.previous:hover,
+.next:hover,
+.icon-close:hover,
+.delete-icon:hover{
+  cursor: pointer;
+}
+
+.details{
+  padding: 1.5rem;
+}
+.details h5{
+  color: var(--primary-orange);
+  font-weight: var(--font-bolder);
+  letter-spacing: 0.1em;
+  font-size:.8rem;
+  padding-bottom:1rem;
+}
+.details h1{
+  font-size: clamp(1.75rem,3vw,3rem);
+  font-weight: var(--font-bolder);
+  padding-bottom:1.5rem;
+  color: var(--very-dark-blue);
+}
+
+.details .content{
+  color: var(--dark-grayish-blue);
+  line-height:1.5rem;
+  padding-bottom:1.5rem;
+  max-width:calc(375px - 3rem);
+}
+.details .price{
+  max-width:calc(375px - 3rem);
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  align-items: center;
+  padding-bottom:1.5rem;
+}
+
+.price p:nth-child(3){
+  justify-self: end;
+  text-decoration: line-through;
+  color: var(--grayish-blue);
+  font-weight:var(--font-bolder);
+}
+.price p:nth-child(2){
+  color: var(--primary-orange);
+  width:2rem;
+  font-weight:var(--font-bolder);
+  padding:.3rem .5rem;
+  background-color: var(--primary-pale-orange);
+  border-radius:.5rem;
+}
+
+.cart-num-control{
+  display: grid;
+  grid-template-columns:repeat(3,1fr) ;
+  max-width: calc(375px - 3rem);
+  padding-bottom:1rem;
+}
+.cart-num-control button{
+  border-width: 0;
+  padding: 1rem;
+}
+.cart-num-control button:nth-child(odd){
+  display: grid;
+  align-items: center;
+  
+}
+.cart-num-control button:nth-child(1){
+  justify-content:start;
+  border-radius: .5rem 0 0 .5rem;
+}
+.cart-num-control button:nth-child(3){
+  justify-content:end;
+  border-radius: 0 .5rem .5rem 0;
+} 
+
+.add-to-cart{
+  max-width: calc(100vw - 3rem);
+}
+
+.active-thumb{
+  position: relative;
+}
+.active-thumb img{
+  opacity: .2; 
+}
+.active-thumb::before{
+  content:" ";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border: 2px solid hsl(26, 100%, 55%);
+  border-radius:1rem;
+}
+
+@media screen and (min-width: 1024px) {
+.App{
+    flex-direction: column;
+  }
+.App{
+  padding: 0 10%;
+  margin-bottom: 50px;
+}
+.body{
+  display:flex;
+  column-gap:15%;
+  align-items: center;
+  padding: 2rem 5%;
+}
+header{
+  position: relative;
+  padding: 0rem 0 0rem 0;
+  margin: 0 auto;
+  width: calc(100vw - 25%);
+  height:6.5rem;
+  display: grid;
+  grid-template-columns:1fr 4fr 2fr;
+}
+.logo-container .menu,.carousel-control{
+  display: none;
+}
+header::after{
+  position: absolute;
+  content: " ";
+  width: calc(100vw - 30%);
+  height:1px;
+  background-color:var(--grayish-blue);
+  display:block;
+  justify-self: center;
+  bottom:0;
+  
+}
+.avatar{
+  width:60px;
+  height:60px;
+}
+.cart{
+  height: 15px;;
+}
+.nav-container{
+  display: inline-block;
+}
+.nav-container li{
+  position: relative;
+  display: inline-block;
+  margin-right: 1.5rem;
+  padding:2.6rem 0;
+}
+.nav-container li:hover{
+  color: black;
+  font-weight:var(--font-bolder);
+  padding:calc(2.6rem - 5px) 0;
+  border-bottom: 5px solid var(--primary-orange);
+}
+
+.nav-container a{
+  color: var(--dark-grayish-blue);
+}
+.cart-avatar{
+  justify-content: end;
+  align-items:center;
+  column-gap: 2rem;
+}
+.product-img{
+  min-width:100%;
+  height: auto;
+  border-radius:1rem;
+}
+
+.details .content{
+  max-width:calc(100vw - 3rem);
+}
+.thumbnail-container{
+  margin: 1.5rem 0;
+  display: grid;
+  column-gap:20px;
+  grid-template-columns:repeat(4,1fr);
+}
+.thumbnail-container img{
+  width:100%;
+  border-radius:1rem;
+}
+.thumbnail-container img:hover{
+    opacity:.5;
+}
+
+.img-container{
+  width:100%;
+}
+
+.details{
+padding: 1.5rem;
+width:30vw;
+}
+.details .price{
+  display: block;
+}
+.details .price p:nth-child(2), .details .price h2{
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: .5rem;
+}
+.details .price p:nth-child(2){
+  padding-bottom:-.6px;
+}
+.details-controls{
+  display: grid;
+  grid-template-columns:1fr 1fr;
+  column-gap:1rem;
+}
+.details-controls div:nth-child(2) button{
+  width:calc(25vw - 3rem);
+}
+
+}
